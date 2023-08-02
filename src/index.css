@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* #myTinerary {
+    color: var(--black, #1C1C1C);
+font-family: Segoe UI;
+font-size: 32px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+} */
