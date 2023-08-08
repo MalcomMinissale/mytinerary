@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Carousel from "../components/Carousel";
+import axios from "axios";
 
 
 export default function Home() {
 
   const [show, setShow] = useState(true)
+  const [data, setData] = useState([])
     const nombre1 = 'My'
 const nombre2 = 'Tinerary'
 
-let data = [
+/* let data = [
   {id: 'america1', city: "Cancun", photo: "/img/america/cancun.jpg"},
   {id: 'america2', city: "New York", photo: "/img/america/newyork.jpg"},
   {id: 'america3', city: "Rio de Janeiro", photo: "/img/america/rioDeJaneiro.jpg"},
@@ -26,7 +28,17 @@ let data = [
   {id: 'oceania3' , city: "Suva", photo: "/img/oceania/suva.jpg"},
   {id: 'oceania4' , city: "Wellington", photo: "/img/oceania/wellington.jpg"}
 ]
-  return (
+ */
+useEffect(
+  ()=>{
+    axios('/data.json')
+      .then(res=>setData(res.data))
+      .catch(err=>console.log(err))
+  },
+  []
+)
+
+return (
     <main className="flex justify-between items-center px-10">
     <div className="flex flex-col justify-center items-start  gap-y-10">
       <h1 className="flex self-stretch text-5xl font-bold w-[742px]">Find the perfect destination</h1>
