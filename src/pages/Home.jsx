@@ -1,9 +1,10 @@
-import Arrow from "../components/Arrow"
-import CardPolaroid from "../components/CardPolaroid"
+import { useState } from "react";
+import Carousel from "../components/Carousel";
 
 
 export default function Home() {
 
+  const [show, setShow] = useState(true)
     const nombre1 = 'My'
 const nombre2 = 'Tinerary'
 
@@ -26,23 +27,27 @@ let data = [
   {id: 'oceania4' , city: "Wellington", photo: "/img/oceania/wellington.jpg"}
 ]
   return (
-    <main className="flex justify-between items-center">
-    <div className="flex flex-col justify-center items-start w-[742px] gap-y-10 pr-20">
-      <h1 className="flex self-stretch text-5xl font-bold">Find the perfect destination</h1>
-        <div className="text-slate-500">
+    <main className="flex justify-between items-center px-10">
+    <div className="flex flex-col justify-center items-start  gap-y-10">
+      <h1 className="flex self-stretch text-5xl font-bold w-[742px]">Find the perfect destination</h1>
+        <div className="text-slate-500 w-[546px]">
           <p>Our app will help you find the perfect path for your next</p>
           <p>trip. With an easy-to-use interface and a host of itinerary</p>
           <p>options, planning your next trip has never been easier.</p>
         </div>
-          <button className="bg-blue-500 rounded-lg text-2xl font-semibold text-white flex w-[346px] px-[16px] py-[20px] justify-center items-center gap-4">View More</button>
+        <div className="flex items-center justify-between">
+          <div>
+          <button className="bg-blue-500 rounded-lg text-2xl font-semibold text-white flex w-[250px] px-[16px] py-[20px] justify-center items-center gap-4">View More</button>
+          </div>
+          <div>
+          {show ?  <input onClick={()=>setShow(!show)} type="button" value='Hide' className="bg-pink-500 hover:bg-blue-700 text-white font-semibold text-2xl py-2 px-4 rounded-lg flex w-[250px] px-[16px] mx-1 py-[20px] justify-center items-center gap-4" /> :  <input onClick={()=>setShow(!show)} type="button" value='Show' className="bg-pink-500 hover:bg-blue-700 text-white font-semibold text-2xl py-2 px-4 rounded-lg flex w-[250px] px-[16px] mx-1 py-[20px] justify-center items-center gap-4" />}
+          </div>
         </div>
-    <div className="flex flex-row items-center">
-      <Arrow />
-      <div className="flex flex-col justify-between items-center mt-5 bg-red-300">
-        {data.slice(0,2).map(each=> <CardPolaroid key={each.id} src={each.photo} alt={each.id} text={each.city} />)}
-      </div> 
-        <Arrow />
-      </div> 
+        </div>
+        
+        {show ? <Carousel data={data} /> : <h1 className="text-[24px]">Click en "Show" para ver Carrousel</h1> }
+        
+    
   </main>
   )
 }
