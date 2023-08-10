@@ -30,8 +30,13 @@ export default function Carousel({ data }) {
 
   return (
     <div className="flex flex-row items-center space-x-1 mt-20 ">
+
       <Arrow onClick={prev_slide} />
+      <div className="flex flex-col">
+      <h1 className="flex justify-center items-center">Popular MyTineraries</h1>
+
       <div className="flex flex-wrap items-center justify-center">
+        
         {data.slice(counter,counterTo).map((each, index) => (
         <CardPolaroid 
         key={index}
@@ -41,6 +46,7 @@ export default function Carousel({ data }) {
         id={each.id}
         />
         ))}
+        </div>
       </div> 
         <Arrow onClick={next_slide} />
       </div> 

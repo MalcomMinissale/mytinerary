@@ -4,20 +4,27 @@ import { Link as Anchor } from "react-router-dom"
 export default function NavBar() {
 const [show, setShow] = useState(false)
 
+
+
   return (
     <header className="bg-white flex justify-center px-10 items-center ">
-
-    <nav className="flex justify-between w-full p-1  items-center" >
+      <nav className="flex justify-between w-full p-1  items-center" >
       <div>
-        <a href="" className="font-sans text-3xl font-bold">My Tinerary</a>
+        <a href="" className="font-sans text-3xl font-bold 
+        md:flex">My Tinerary</a>
       </div>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
-        onClick={()=>setShow(!show)} strokeWidth={1.5} stroke="currentColor" className="cursor-pointer w-[40px] h-[40px] flex items-end" >
+        <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        fill="none" viewBox="0 0 24 24" 
+        onClick={()=>setShow(!show)} 
+        strokeWidth={1.5} stroke="currentColor" 
+        className="cursor-pointer w-[40px] h-[40px] items-end justify-start
+        md:hidden" >
           <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
         </svg>
-        {show ? (<div className="flex flex-row items-center">
-              <Anchor to='/home' className="px-2 font-bold text-2xl">Home</Anchor>
-              <Anchor to='/cities' className="animate-bounce px-2 font-bold text-2xl text-amber-300 ">Cities</Anchor>
+        {!show ? (<div className="flex flex-row items-center">
+              <Anchor to='/home' className=" font-bold text-2xl">Home</Anchor>
+              <Anchor to='/cities' className="animate-bounce px-4 font-bold text-2xl text-amber-300 ">Cities</Anchor>
               <Anchor to='/signin'>
                 <button class="bg-blue-300 hover:bg-blue-400 text-gray-800 font-bold py-2 px-4 me-2 rounded inline-flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 ">
