@@ -1,4 +1,6 @@
+import Footer from "../components/Footer"
 import NavBar from "../components/NavBar"
+import { Outlet } from "react-router-dom"
 
 export default function MainLayout({ children }) {
   return (
@@ -9,7 +11,8 @@ export default function MainLayout({ children }) {
     {/* */}
 
     {/* ACA SE DEBE INSERTAR EL CONTENIDO DINAMICO DE CADA VISTA*/}
-    {children}
+    <Outlet />
+    <Footer />
   </div> 
   )
 }
