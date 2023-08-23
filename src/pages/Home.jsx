@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Carousel from "../components/Carousel";
 import axios from "axios";
-
+import apiUrl from '../apiUrl.js'
 
 export default function Home() {
 
@@ -31,8 +31,9 @@ const nombre2 = 'Tinerary'
  */
 useEffect(
   ()=>{
-    axios('/data.json')
-      .then(res=>setData(res.data))
+    axios(apiUrl+'cities/carousel')
+     // .then(res=>console.log(res.data.data_carousel))
+      .then(res=>setData(res.data.data_carousel))
       .catch(err=>console.log(err))
   },
   []
@@ -49,16 +50,18 @@ return (
         </div>
         <div className="flex items-center justify-between">
           <div>
-          <button className="bg-blue-500 rounded-lg text-2xl font-semibold text-white flex w-[250px] px-[16px] py-[20px] justify-center items-center gap-4">View More</button>
+          <button className="bg-pink-500 hover:bg-blue-500 rounded-lg text-2xl font-semibold text-white flex w-[250px] px-[16px] py-[20px] justify-center items-center gap-4">View More</button>
           </div>
-          <div>
+          {/* <div>
           {show ?  <input onClick={()=>setShow(!show)} type="button" value='Hide' className="bg-pink-500 hover:bg-blue-700 text-white font-semibold text-2xl py-2 px-4 rounded-lg flex w-[250px] px-[16px] mx-1 py-[20px] justify-center items-center gap-4" /> :  <input onClick={()=>setShow(!show)} type="button" value='Show' className="bg-pink-500 hover:bg-blue-700 text-white font-semibold text-2xl py-2 px-4 rounded-lg flex w-[250px] px-[16px] mx-1 py-[20px] justify-center items-center gap-4" />}
-          </div>
+          </div> */}
         </div>
         </div>
         
-        {show ? <Carousel data={data} /> : <h1 className="text-[24px]">Click en "Show" para ver Carrousel</h1> }
-        
+  {/*       {show ? <Carousel data={data} /> : <h1 className="text-[24px]">Click en "Show" para ver Carrousel</h1> }
+        */} 
+
+        <Carousel data={data} />
     
   </main>
   )
